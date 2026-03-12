@@ -35,6 +35,15 @@ export interface Scores {
   total: number;
 }
 
+
+export interface RewardBreakdown {
+  merge: number;
+  territory: number;
+  continuity: number;
+  survival: number;
+  total: number;
+}
+
 export interface GameState {
   board: Board;
   tiles: (Tile | null)[][];
@@ -49,6 +58,7 @@ export interface GameState {
   gameOver: boolean;
   rngState: number;
   log: string[];
+  lastReward: RewardBreakdown;
 }
 
 export interface SlideResult {

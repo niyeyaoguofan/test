@@ -15,6 +15,7 @@ export function Hud({ state, onRestart }: Props) {
       <div><strong>Territory:</strong> {territory}</div>
       <div><strong>Contested:</strong> {contested}</div>
       <div><strong>Expansion charge:</strong> {state.expansionCharge}/{state.nextExpansionThreshold}</div>
+      <div><strong>Last reward:</strong> {state.lastReward.total} (T:{state.lastReward.territory} C:{state.lastReward.continuity})</div>
       <button onClick={onRestart}>Restart</button>
     </div>
   );

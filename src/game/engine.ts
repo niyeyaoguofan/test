@@ -40,7 +40,8 @@ export function createInitialState(seed = 1337): GameState {
     growthCounters: {},
     gameOver: false,
     rngState,
-    log: []
+    log: [],
+    lastReward: { merge: 0, territory: 0, continuity: 0, survival: 0, total: 0 }
   };
 }
 
@@ -83,6 +84,14 @@ export function step(state: GameState, direction: Direction): StepResult {
   const finalTerritory = computeTerritory(evolved.board, postTiles);
   const over = !hasAnyValidMove(evolved.board.activeCells, postTiles);
 
+  const turnReward = {
+    merge: mergeGain,
+    territory: Math.max(0, territoryGain),
+    continuity: continuityGain,
+    survival: survivalGain,
+    total: Math.max(0, territoryGain) + continuityGain + survivalGain + mergeGain
+  };
+
   const scores = {
     merge: state.scores.merge + mergeGain,
     territory: state.scores.territory + Math.max(0, territoryGain),
@@ -108,6 +117,7 @@ export function step(state: GameState, direction: Direction): StepResult {
       growthCounters: effects.growthCounters,
       gameOver: over,
       rngState,
+      lastReward: turnReward,
       log: [
         `Turn ${state.turn + 1}: ${direction} | territory +${Math.max(0, territoryGain)} | continuity +${continuityGain}`,
         ...state.log

@@ -91,3 +91,4 @@ Engine remains AI-friendly:
   - territory reward,
   - continuity reward,
   - survival reward.
+- The state now stores `lastReward` per turn to simplify Gym-like reward logging and debugging.

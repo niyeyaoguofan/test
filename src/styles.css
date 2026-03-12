@@ -14,7 +14,7 @@ body { margin: 0; }
 
 .hud {
   display: grid;
-  grid-template-columns: repeat(5, auto) 1fr;
+  grid-template-columns: repeat(6, auto) 1fr;
   gap: 10px;
   align-items: center;
   margin-bottom: 12px;
