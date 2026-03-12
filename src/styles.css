@@ -1,0 +1,98 @@
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #e9eef8;
+  background: #0f1420;
+}
+
+body { margin: 0; }
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.subtitle { color: #93a4c7; margin-top: -6px; }
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(5, auto) 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.hud button { justify-self: end; }
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+button {
+  border: 1px solid #3c4b6a;
+  background: #1a2337;
+  color: #e9eef8;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  background: #101a2f;
+  padding: 10px;
+  border-radius: 12px;
+}
+.cell {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  transition: background 180ms ease;
+}
+.cell.inactive { background: #0b0f18; border: 1px dashed #242b3a; }
+.cell.active { background: #1d2942; }
+.cell.controlled { box-shadow: inset 0 0 0 2px rgba(90, 215, 172, 0.75); }
+.cell.contested { box-shadow: inset 0 0 0 2px rgba(227, 168, 86, 0.7); }
+.cell.new-cell { animation: pulse 500ms ease; }
+@keyframes pulse {
+  0% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.tile {
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+.basic { background: #385492; }
+.level-1 { background: #2f4a86; }
+.level-2 { background: #4362ad; }
+.level-3 { background: #5778c7; }
+.level-4 { background: #6c90e0; }
+.level-5, .level-6 { background: #89a5ec; color: #0f1420; }
+
+.core.beacon { background: #2f9e77; }
+.core.attractor { background: #a15ae6; }
+.core.growth { background: #e68a42; }
+
+.legend { display: flex; gap: 10px; margin-top: 10px; }
+.badge { padding: 4px 8px; border-radius: 8px; font-size: 12px; }
+.badge.beacon { background: #2f9e77; }
+.badge.attractor { background: #a15ae6; }
+.badge.growth { background: #e68a42; }
+
+.game-over {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #5a2323;
+}
+.log {
+  margin-top: 10px;
+  color: #95a2bd;
+  font-size: 14px;
+}
